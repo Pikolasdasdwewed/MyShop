@@ -1,0 +1,60 @@
+<%- include('partials/header', { title: 'Мониторы' }) %>
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1 class="h3 m-0">Мониторы</h1>
+  <% if (currentUser && currentUser.rule === 'admin') { %>
+    <a href="/products/new" class="btn btn-success">Добавить монитор</a>
+  <% } %>
+</div>
+
+<div class="row g-3">
+  <% products.forEach(p => { %>
+    <div class="col-12 col-sm-6 col-lg-4">
+      <div class="card h-100 shadow-sm">
+        
+        <!-- Картинка -->
+        <div class="product-img-wrapper">
+          <img src="<%= p.pic %>" alt="pic">
+        </div>
+
+
+        <div class="card-body d-flex flex-column">
+
+          <!-- Название -->
+          <h5 class="card-title">
+            <%= p.brand %> <%= p.model %>
+          </h5>
+
+          <!-- Характеристики -->
+          <p class="card-text small text-muted flex-grow-1">
+            <strong><%= p.diagonal %>"</strong>,
+            <%= p.resolution %>,
+            <%= p.panelType %> панель<br>
+            <%= p.refreshRate %>Hz, 
+            отклик <%= p.responseTime %>ms<br>
+            Порты: <%= p.ports %><br>
+            <span class="text-dark"><%= p.desc %></span>
+          </p>
+
+          <!-- Цена + кнопки -->
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="fw-bold">$<%= Number(p.price).toFixed(2) %></span>
+
+            <% if (currentUser && currentUser.rule === 'admin') { %>
+              <div class="d-flex gap-2">
+                <a class="btn btn-outline-primary btn-sm" href="/products/<%= p.id %>/edit">Edit</a>
+                <form action="/products/<%= p.id %>/delete" method="post">
+                  <button class="btn btn-outline-danger btn-sm" onclick="return confirm('Delete product?')">Delete</button>
+                </form>
+              </div>
+            <% } %>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  <% }) %>
+</div>
+
+<%- include('partials/footer') %>

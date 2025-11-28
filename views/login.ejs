@@ -1,0 +1,58 @@
+<%- include('partials/header', { title: 'Вход' }) %>
+
+<div class="row justify-content-center">
+  <div class="col-sm-10 col-md-6 col-lg-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+
+        <h1 class="h4 mb-3">Вход в систему</h1>
+
+        <% if (showError) { %>
+          <div class="alert alert-danger py-2">
+            Неверный email или пароль
+          </div>
+        <% } %>
+
+        <form action="/login" method="post">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input 
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              placeholder="Введите email"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Пароль</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              name="password"
+              placeholder="Ваш пароль"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100">Войти</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if (showError) { %>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const pwd = document.getElementById('password');
+    if (pwd) pwd.focus();
+  });
+</script>
+<% } %>
+
+<%- include('partials/footer') %>

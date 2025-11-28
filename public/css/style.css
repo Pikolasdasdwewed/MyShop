@@ -1,0 +1,22 @@
+/* Небольшие стили для карточек и адаптивности */
+body { background: #f8f9fa; }
+.card { border: none; }
+.object-fit-cover { object-fit: cover; }
+
+.product-img-wrapper {
+  width: 100%;
+  aspect-ratio: 4 / 3; /* правильное соотношение */
+  background: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden; /* не даёт изображению вылезать */
+}
+
+.product-img-wrapper img {
+  width: 85%;
+  object-fit: contain; /* ВАЖНО — ничего не обрезается */
+}

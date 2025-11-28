@@ -1,0 +1,26 @@
+{
+  "name": "myshop",
+  "version": "1.0.0",
+  "description": "Simple MyShop app with Express, Sequelize, MySQL, sessions, auth, CRUD, and REST API",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.6.1",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-session": "^1.18.2",
+    "mysql2": "^3.15.3",
+    "sequelize": "^6.37.7",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
